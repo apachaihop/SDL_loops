@@ -242,11 +242,7 @@ eng::game* reload_game(eng::game*   old,
     return game;
 }
 
-#ifdef __cplusplus
-extern "C"
-#endif
-    int
-    main()
+    int main()
 {
     std::unique_ptr<eng::engine, void (*)(eng::engine*)> engine(
         eng::create_engine(), eng::destroy_engine);
