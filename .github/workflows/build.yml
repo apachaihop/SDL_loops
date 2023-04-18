@@ -1,0 +1,37 @@
+name: build
+
+on:
+  push:
+    branches: [ "master" ]
+  pull_request:
+    branches: [ "master" ]
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v3
+    
+    - name: SDL3
+      run: |
+        git clone https://github.com/libsdl-org/SDL.git
+        cd SDL
+        mkdir build
+        cd build
+        cmake -DSDL_STATIC=ON ..
+        make
+        sudo cmake --install .
+    - name: Configure CMake so_engine
+      run: |
+        cd ${{ github.workspace }}
+        cd SDL_so_engine
+        mkdir build
+        cd build
+        cmake ..
+    - name: Configure engine_hot_reload
+      run: |
+        cd ${{ github.workspace }}
+        cd SDL_engine_hot_reload
+        mkdir build
+        cd build
+        cmake ..
