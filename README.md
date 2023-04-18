@@ -14,3 +14,5 @@
 ### Find out how to implement boost in this project
 ### Checkout one more time about hot reload and make serialization
 ### Add all SDL events (mobile ections neaded)
+### Hot reload video
+https://youtu.be/AIIeQmzBwf0
