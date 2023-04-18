@@ -220,18 +220,18 @@ eng::game* reload_game(eng::game*   old,
                   << " " << SDL_GetError() << std::endl;
         return nullptr;
     }
-    // void* destroy_game_func_ptr =
-    //(void*)SDL_LoadFunction(game_handle, "destroy_game");
+    void* destroy_game_func_ptr =
+     (void*)SDL_LoadFunction(game_handle, "destroy_game");
 
     using create_game_ptr = decltype(&create_game);
-    // using destroy_game_ptr = decltype(&destroy_game);
+     using destroy_game_ptr = decltype(&destroy_game);
 
-    // auto destroy_game_func =
-    // reinterpret_cast<destroy_game_ptr>(destroy_game_func_ptr);
+     auto destroy_game_func =
+        reinterpret_cast<destroy_game_ptr>(destroy_game_func_ptr);
     auto create_game_func =
         reinterpret_cast<create_game_ptr>(create_game_func_ptr);
 
-    // destroy_game_func(old);
+    destroy_game_func(old);
     eng::game* game = create_game_func(&engine);
 
     if (game == nullptr)
