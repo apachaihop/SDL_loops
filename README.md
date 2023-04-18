@@ -1,3 +1,4 @@
+[![build](https://github.com/apachaihop/SDL_loops/actions/workflows/build.yml/badge.svg)](https://github.com/apachaihop/SDL_loops/actions/workflows/build.yml)
 # SDL_loops
 ## Here some info about this project
 ### Theres 4 packages with some realization of your own engine using SDL
