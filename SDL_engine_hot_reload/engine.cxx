@@ -221,12 +221,12 @@ eng::game* reload_game(eng::game*   old,
         return nullptr;
     }
     void* destroy_game_func_ptr =
-     (void*)SDL_LoadFunction(game_handle, "destroy_game");
+        (void*)SDL_LoadFunction(game_handle, "destroy_game");
 
-    using create_game_ptr = decltype(&create_game);
-     using destroy_game_ptr = decltype(&destroy_game);
+    using create_game_ptr  = decltype(&create_game);
+    using destroy_game_ptr = decltype(&destroy_game);
 
-     auto destroy_game_func =
+    auto destroy_game_func =
         reinterpret_cast<destroy_game_ptr>(destroy_game_func_ptr);
     auto create_game_func =
         reinterpret_cast<create_game_ptr>(create_game_func_ptr);
@@ -242,7 +242,7 @@ eng::game* reload_game(eng::game*   old,
     return game;
 }
 
-    int main()
+int main()
 {
     std::unique_ptr<eng::engine, void (*)(eng::engine*)> engine(
         eng::create_engine(), eng::destroy_engine);
